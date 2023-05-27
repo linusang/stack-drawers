@@ -1,0 +1,43 @@
+{
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "vite --port 3333 --host",
+    "typecheck": "vue-tsc --noEmit",
+    "build": "vue-tsc --noEmit && vite build",
+    "serve": "vite preview --host",
+    "cypress": "cypress open --component",
+    "cypress-ci": "cypress run-ct",
+    "prettier": "npx prettier --write .",
+    "lint": "eslint --ext .ts,vue --ignore-path .gitignore .",
+    "vitest": "vitest run",
+    "vitest:watch": "vitest"
+  },
+  "dependencies": {
+    "vue": "^3.3.4"
+  },
+  "devDependencies": {
+    "@cypress/vite-dev-server": "^5.0.5",
+    "@cypress/vue": "^5.0.5",
+    "@typescript-eslint/eslint-plugin": "^5.26.0",
+    "@typescript-eslint/parser": "^5.26.0",
+    "@vitejs/plugin-vue": "^4.2.3",
+    "@vue/compiler-dom": "^3.2.45",
+    "@vue/eslint-config-prettier": "^7.0.0",
+    "@vue/eslint-config-typescript": "^10.0.0",
+    "@vue/test-utils": "^2.0.0",
+    "autoprefixer": "^10.4.7",
+    "cypress": "^12.10.0",
+    "eslint": "^8.41.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-simple-import-sort": "^7.0.0",
+    "eslint-plugin-vue": "^8.7.1",
+    "postcss": "^8.4.14",
+    "prettier": "^2.8.8",
+    "prettier-plugin-tailwindcss": "^0.3.0",
+    "tailwindcss": "^3.3.2",
+    "typescript": "^5.0.4",
+    "vite": "^4.3.9",
+    "vitest": "^0.31.1",
+    "vue-tsc": "^1.6.5"
+  }
+}
