@@ -10,10 +10,13 @@
     "prettier": "npx prettier --write .",
     "lint": "eslint --ext .ts,vue --ignore-path .gitignore .",
     "vitest": "vitest run",
-    "vitest:watch": "vitest"
+    "vitest:watch": "vitest",
+    "build:blog-demo": "vite build --mode blog-demo --base=/demo/stack-drawers"
   },
   "dependencies": {
-    "vue": "^3.3.4"
+    "@headlessui/vue": "^1.7.13",
+    "vue": "^3.3.4",
+    "vue-router": "^4.2.1"
   },
   "devDependencies": {
     "@cypress/vite-dev-server": "^5.0.5",
