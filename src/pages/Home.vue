@@ -2,10 +2,6 @@
   import { Icon } from "@iconify/vue";
 
   import RouterLinkButton from "@/components/RouterLinkButton.vue";
-
-  // const domainPath = import.meta.env.VITE_BASE_URL
-  //   ? location.origin + import.meta.env.VITE_BASE_URL
-  //   : document.location.origin;
 </script>
 <template>
   <div class="flex h-screen items-center justify-center">
