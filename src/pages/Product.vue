@@ -1,4 +1,5 @@
 <script setup lang="ts">
+  import { Icon } from "@iconify/vue";
   import { useRoute } from "vue-router";
 
   import AppDrawer from "@/components/AppDrawer.vue";
@@ -25,9 +26,15 @@
                 Scroll here to see the overflow in between the header and footer
               </p>
               <div class="text-center">
-                <RouterLinkButton :to="{ name: 'product-edit', params: { id } }"
-                  >Edit Product</RouterLinkButton
-                >
+                <RouterLinkButton
+                  :to="{ name: 'product-edit', params: { id } }"
+                  class="inline-flex items-center gap-1"
+                  >Edit Product
+                  <Icon
+                    icon="heroicons-solid:chevron-right"
+                    class="h-6 w-6 text-slate-600"
+                  ></Icon
+                ></RouterLinkButton>
               </div>
             </div>
             <p class="px-6 text-center">End of content</p>

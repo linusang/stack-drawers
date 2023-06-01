@@ -1,4 +1,6 @@
 <script setup lang="ts">
+  import { Icon } from "@iconify/vue";
+
   import RouterLinkButton from "@/components/RouterLinkButton.vue";
 
   // const domainPath = import.meta.env.VITE_BASE_URL
@@ -39,7 +41,13 @@
         </ul>
       </div>
       <div class="flex justify-center">
-        <RouterLinkButton to="/products">Open Products Drawer</RouterLinkButton>
+        <RouterLinkButton to="/products" class="inline-flex items-center"
+          >Open Products Drawer
+          <Icon
+            icon="heroicons-solid:chevron-right"
+            class="h-6 w-6 text-slate-600"
+          ></Icon
+        ></RouterLinkButton>
       </div>
     </div>
   </div>

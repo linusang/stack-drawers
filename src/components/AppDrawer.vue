@@ -39,7 +39,7 @@
     <div
       class="grid h-full max-h-full grid-rows-[min-content_1fr_min-content] items-start"
     >
-      <div class="flex items-center gap-8 bg-slate-100 px-6 py-4">
+      <div class="flex items-center gap-8 bg-slate-100 px-6 py-4 shadow-md">
         <BackButton @click="close"></BackButton>
         <slot name="header" :back="close"></slot>
       </div>
@@ -47,7 +47,7 @@
         <slot :back="close"></slot>
       </div>
 
-      <div v-if="hasFooter" class="bg-slate-100 px-6 py-4">
+      <div v-if="hasFooter" class="bg-slate-100 px-6 py-4 shadow-t-md">
         <slot name="footer" :back="close"></slot>
       </div>
     </div>
