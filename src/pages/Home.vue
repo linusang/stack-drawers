@@ -45,6 +45,13 @@
           ></Icon
         ></RouterLinkButton>
       </div>
+      <div class="flex justify-center">
+        <a
+          href="https://github.com/linusang/stack-drawers"
+          class="text-blue-600 underline"
+          >Source</a
+        >
+      </div>
     </div>
   </div>
 
