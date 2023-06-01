@@ -19,14 +19,11 @@
             Notice the URL changes as you open and close drawers. This is
             because StackDrawers are designed to work with Vue Router.
           </li>
-          <!-- <li>
-            Try going to
-            <span class="bg-gray-300 font-mono"
-              >{{ domainPath }}/products/2/edit</span
-            >
-            directly in the address bar to open up all the drawers representing
-            that route.
-          </li> -->
+          <li>
+            Try going to the URL directly in the address bar of an opened drawer
+            in a new browser tab. You should see the drawer(s) opened
+            automatically.
+          </li>
           <li>
             You may also use the ESC key to close the topmost drawer. Try it!
           </li>
