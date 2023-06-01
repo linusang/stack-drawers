@@ -21,6 +21,7 @@
   "devDependencies": {
     "@cypress/vite-dev-server": "^5.0.5",
     "@cypress/vue": "^5.0.5",
+    "@iconify/vue": "^4.1.1",
     "@typescript-eslint/eslint-plugin": "^5.26.0",
     "@typescript-eslint/parser": "^5.26.0",
     "@vitejs/plugin-vue": "^4.2.3",
