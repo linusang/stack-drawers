@@ -9,7 +9,7 @@
     "resolveJsonModule": true,
     "esModuleInterop": true,
     "lib": ["esnext", "dom"],
-    "types": ["cypress"],
+    "types": ["cypress", "unplugin-icons/types/vue"],
     "baseUrl": ".",
     "paths": {
       "@/*": ["src/*"]

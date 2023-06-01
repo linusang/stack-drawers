@@ -1,7 +1,6 @@
 <script setup lang="ts">
-  import { Icon } from "@iconify/vue";
-
   import RouterLinkButton from "@/components/RouterLinkButton.vue";
+  import IconChevronRight from "~icons/heroicons/chevron-right-20-solid";
 </script>
 <template>
   <div class="flex h-screen items-center justify-center">
@@ -36,11 +35,8 @@
       <div class="flex justify-center">
         <RouterLinkButton to="/products" class="inline-flex items-center"
           >Open Products Drawer
-          <Icon
-            icon="heroicons-solid:chevron-right"
-            class="h-6 w-6 text-slate-600"
-          ></Icon
-        ></RouterLinkButton>
+          <IconChevronRight class="h-6 w-6 text-slate-700"
+        /></RouterLinkButton>
       </div>
       <div class="flex justify-center">
         <a

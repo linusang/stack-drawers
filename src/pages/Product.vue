@@ -1,10 +1,10 @@
 <script setup lang="ts">
-  import { Icon } from "@iconify/vue";
   import { useRoute } from "vue-router";
 
   import AppDrawer from "@/components/AppDrawer.vue";
   import DemoButton from "@/components/DemoButton.vue";
   import RouterLinkButton from "@/components/RouterLinkButton.vue";
+  import IconChevronRight from "~icons/heroicons/chevron-right-20-solid";
 
   const route = useRoute();
 
@@ -30,11 +30,8 @@
                   :to="{ name: 'product-edit', params: { id } }"
                   class="inline-flex items-center gap-1"
                   >Edit Product
-                  <Icon
-                    icon="heroicons-solid:chevron-right"
-                    class="h-6 w-6 text-slate-600"
-                  ></Icon
-                ></RouterLinkButton>
+                  <IconChevronRight class="h-6 w-6 text-slate-700" />
+                </RouterLinkButton>
               </div>
             </div>
             <p class="px-6 text-center">End of content</p>
