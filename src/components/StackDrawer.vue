@@ -2,7 +2,7 @@
   import { computed, inject, ref } from "vue";
 
   import SlidePanel from "./SlidePanel.vue";
-  import { STACKED_DRAWER_KEY } from "./stackDrawersPlugin";
+  import { STACK_DRAWERS_KEY } from "./stackDrawersPlugin";
   interface Props {
     teleportTo?: string;
     drawerCss?: string;
@@ -21,7 +21,7 @@
   defineEmits<Emits>();
   const index = ref<number | undefined>();
   const slidePanel = ref<InstanceType<typeof SlidePanel>>();
-  const context = inject(STACKED_DRAWER_KEY);
+  const context = inject(STACK_DRAWERS_KEY);
   const stackDrawersCount = computed(() => context?.count.value ?? 0);
   const drawerWidth = computed<string>(() => {
     let result = props.topMostDrawerWidthCss;

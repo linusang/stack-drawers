@@ -5,30 +5,30 @@ export interface StackDrawerInstanceContext {
   close(): void;
 }
 
-export interface StackDrawerGlobalContext {
+export interface StackDrawersGlobalContext {
   count: ComputedRef<number>;
   register(drawer: StackDrawerInstanceContext): number;
   unregister(drawer: StackDrawerInstanceContext): void;
 }
 
-export function createStackDrawerGlobalContext(): StackDrawerGlobalContext {
-  const stackedDrawers: Ref<StackDrawerInstanceContext[]> = ref([]);
-  const count = computed(() => stackedDrawers.value.length);
+export function createStackDrawersGlobalContext(): StackDrawersGlobalContext {
+  const stackDrawers: Ref<StackDrawerInstanceContext[]> = ref([]);
+  const count = computed(() => stackDrawers.value.length);
   let escKeyHandlerAdded = false;
   function register(drawer: StackDrawerInstanceContext) {
-    stackedDrawers.value.push(drawer);
-    const index = stackedDrawers.value.indexOf(drawer);
+    stackDrawers.value.push(drawer);
+    const index = stackDrawers.value.indexOf(drawer);
     return index;
   }
   function unregister(drawer: StackDrawerInstanceContext) {
-    const index = stackedDrawers.value.indexOf(drawer);
+    const index = stackDrawers.value.indexOf(drawer);
     if (index !== -1) {
-      stackedDrawers.value.splice(index, 1);
+      stackDrawers.value.splice(index, 1);
     }
   }
   function keyDownHandler(event: KeyboardEvent) {
     if (event.key === "Escape") {
-      const lastDrawer = stackedDrawers.value[stackedDrawers.value.length - 1];
+      const lastDrawer = stackDrawers.value[stackDrawers.value.length - 1];
       if (lastDrawer) {
         lastDrawer.close();
       }
@@ -52,12 +52,12 @@ export function createStackDrawerGlobalContext(): StackDrawerGlobalContext {
   };
 }
 
-export const STACKED_DRAWER_KEY = Symbol(
-  "StackedDrawerGlobalContext"
-) as InjectionKey<StackDrawerGlobalContext>;
+export const STACK_DRAWERS_KEY = Symbol(
+  "StackDrawersGlobalContext"
+) as InjectionKey<StackDrawersGlobalContext>;
 
 export default {
   install(app: App) {
-    app.provide(STACKED_DRAWER_KEY, createStackDrawerGlobalContext());
+    app.provide(STACK_DRAWERS_KEY, createStackDrawersGlobalContext());
   },
 };
