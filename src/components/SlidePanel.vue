@@ -15,7 +15,7 @@
 
   const props = withDefaults(defineProps<Props>(), {
     side: "bottom",
-    containerCss: "z-50",
+    containerCss: "",
     backdropCss: "bg-slate-800/50",
   });
 

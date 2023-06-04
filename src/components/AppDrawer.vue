@@ -36,14 +36,12 @@
     drawer-css="shadow-l-lg"
     @closed="closed"
   >
-    <div
-      class="grid h-full max-h-full grid-rows-[min-content_1fr_min-content] items-start"
-    >
+    <div class="flex h-full max-h-full flex-col">
       <div class="flex items-center gap-8 bg-slate-100 px-6 py-4 shadow-md">
         <BackButton @click="close"></BackButton>
         <slot name="header" :back="close"></slot>
       </div>
-      <div class="h-full max-h-full min-h-0 overflow-auto">
+      <div class="grow overflow-auto">
         <slot :back="close"></slot>
       </div>
 
