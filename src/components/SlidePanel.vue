@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { TransitionChild, TransitionRoot } from "@headlessui/vue";
   import { computed, defineComponent, ref } from "vue";
 
   export default defineComponent({
@@ -74,38 +73,61 @@
     }
     return css;
   });
+
+  const computedTransformValue = computed(() => {
+    let transformValue = "none";
+    switch (props.side) {
+      case "bottom":
+        transformValue = "translate(0, 100%)";
+        break;
+      case "left":
+        transformValue = "translate(-100%, 0)";
+        break;
+      case "right":
+        transformValue = "translate(100%, 0)";
+        break;
+    }
+    return transformValue;
+  });
 </script>
 <template>
-  <TransitionRoot
-    :show="isOpened"
-    class="fixed inset-0"
-    :class="[containerCss]"
+  <Transition
+    name="slide-panel"
+    :duration="{ enter: 300, leave: 300 }"
     @before-enter="$emit('opening')"
     @after-enter="$emit('opened')"
     @before-leave="$emit('closing')"
     @after-leave="$emit('closed')"
   >
-    <TransitionChild
-      class="absolute inset-0"
-      :class="[backdropCss]"
-      enter="transition-opacity duration-300 ease-linear"
-      enter-from="opacity-0"
-      enter-to="opacity-100"
-      leave="transition-opacity duration-300 ease-linear"
-      leave-from="opacity-100"
-      leave-to="opacity-0"
-      @click.self="$emit('backdrop-clicked')"
-    ></TransitionChild>
-    <TransitionChild
-      v-bind="$attrs"
-      class="absolute"
-      :class="[computedCss]"
-      enter="transition-transform duration-300 ease-in-out"
-      leave="transition-transform duration-300 ease-in-out"
-      :enter-from="computedTranslate"
-      :leave-to="computedTranslate"
-    >
-      <slot :close="close"></slot>
-    </TransitionChild>
-  </TransitionRoot>
+    <div v-if="isOpened" class="fixed inset-0" :class="[containerCss]">
+      <div
+        class="slide-panel-backdrop absolute inset-0 transition-opacity duration-300"
+        :class="[backdropCss]"
+        @click.self="$emit('backdrop-clicked')"
+      ></div>
+      <div
+        v-bind="$attrs"
+        class="slide-panel-content absolute duration-300"
+        :class="[computedCss]"
+        :style="{ '--transform-value': computedTransformValue }"
+      >
+        <slot :close="close"></slot>
+      </div>
+    </div>
+  </Transition>
 </template>
+<style scoped>
+  .slide-panel-enter-from .slide-panel-backdrop,
+  .slide-panel-leave-to .slide-panel-backdrop {
+    opacity: 0;
+  }
+
+  .slide-panel-content {
+    transition-property: transform, width, height;
+  }
+
+  .slide-panel-enter-from .slide-panel-content,
+  .slide-panel-leave-to .slide-panel-content {
+    transform: var(--transform-value);
+  }
+</style>

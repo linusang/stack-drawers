@@ -15,7 +15,6 @@
     "build:github-pages": "vite build --base=/stack-drawers"
   },
   "dependencies": {
-    "@headlessui/vue": "^1.7.13",
     "vue": "^3.3.4",
     "vue-router": "^4.2.1"
   },

@@ -63,7 +63,7 @@
     <SlidePanel
       ref="slidePanel"
       side="right"
-      class="bg-white transition-[width_transform] duration-300"
+      class="bg-white"
       :class="[drawerCss, drawerWidth]"
       @backdrop-clicked="close"
       @closing="$emit('closing')"
