@@ -30,6 +30,11 @@
             The drawers are also responsive. When in mobile view, the drawers
             take up the full width.
           </li>
+          <li>
+            Try pressing tabs multiple times and notice that the focuses' are
+            performed only at the topmost drawer and not at the bottom drawers /
+            layers
+          </li>
         </ul>
       </div>
       <div class="flex justify-center">

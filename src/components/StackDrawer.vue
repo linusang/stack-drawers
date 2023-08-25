@@ -3,6 +3,7 @@
 
   import SlidePanel from "./SlidePanel.vue";
   import { STACK_DRAWERS_KEY } from "./stackDrawersPlugin";
+
   interface Props {
     teleportTo?: string;
     drawerCss?: string;
@@ -14,20 +15,34 @@
     topMostDrawerWidthCss:
       "w-full sm:w-[calc(100%-8rem)] md:w-[calc(100%-16rem)]",
   });
+
   interface Emits {
     (e: "closing"): void;
     (e: "closed"): void;
   }
   defineEmits<Emits>();
+
+  interface Slots {
+    default: {
+      close: () => void;
+      drawersCount: number;
+      index: number | null;
+      isTopMost: boolean;
+    };
+  }
+  defineSlots<Slots>();
+
   const index = ref<number | undefined>();
   const slidePanel = ref<InstanceType<typeof SlidePanel>>();
+
   const context = inject(STACK_DRAWERS_KEY);
-  const stackDrawersCount = computed(() => context?.count.value ?? 0);
+
+  const drawersCount = computed(() => context?.count.value ?? 0);
   const drawerWidth = computed<string>(() => {
     let result = props.topMostDrawerWidthCss;
 
-    if (stackDrawersCount.value > 0) {
-      const lastIndex = stackDrawersCount.value - 1;
+    if (drawersCount.value > 0) {
+      const lastIndex = drawersCount.value - 1;
       if (index.value === lastIndex) {
         result = props.topMostDrawerWidthCss;
       } else {
@@ -37,6 +52,8 @@
 
     return result;
   });
+  const isTopMost = computed(() => index.value === drawersCount.value - 1);
+
   const stackDrawerInstanceContext = {
     close,
   };
@@ -69,7 +86,12 @@
       @closing="$emit('closing')"
       @closed="$emit('closed')"
     >
-      <slot :close="close"></slot>
+      <slot
+        :close="close"
+        :drawers-count="drawersCount"
+        :index="index"
+        :is-top-most="isTopMost"
+      ></slot>
     </SlidePanel>
   </Teleport>
 </template>

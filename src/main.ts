@@ -14,5 +14,12 @@ const router = createRouter({
 
 const app = createApp(App);
 app.use(router);
-app.use(stackDrawersPlugin);
+app.use(
+  stackDrawersPlugin({
+    lockBodyScroll: true,
+    inertElements: () => {
+      return [document.getElementById("app")];
+    },
+  })
+);
 app.mount("#app");

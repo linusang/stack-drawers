@@ -9,11 +9,19 @@
     parentRoute?: RouteLocationRaw;
   }>();
 
-  const slots = defineSlots<{
-    header(props: { back: () => void }): any;
-    default(props: { back: () => void }): any;
-    footer(props: { back: () => void }): any;
-  }>();
+  interface Slots {
+    header: {
+      back: () => void;
+    };
+    default: {
+      back: () => void;
+    };
+    footer: {
+      back: () => void;
+    };
+  }
+
+  const slots = defineSlots<Slots>();
   const router = useRouter();
   const stackDrawer = ref<InstanceType<typeof StackDrawer>>();
 
@@ -32,11 +40,11 @@
 <template>
   <StackDrawer
     ref="stackDrawer"
-    v-slot="{ close }"
+    v-slot="{ close, isTopMost }"
     drawer-css="shadow-l-lg"
     @closed="closed"
   >
-    <div class="flex h-full max-h-full flex-col">
+    <div class="flex h-full max-h-full flex-col" :inert="!isTopMost">
       <div class="flex items-center gap-8 bg-slate-100 px-6 py-4 shadow-md">
         <BackButton @click="close"></BackButton>
         <slot name="header" :back="close"></slot>
